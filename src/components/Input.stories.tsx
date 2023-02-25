@@ -14,6 +14,7 @@ const Template: ComponentStory<typeof Input> = () => {
       <Input size="large" placeholder="placeholder" />
       <Input.Search enterButton />
       <Input.Search enterButton="Search" />
+      <Input.TextArea rows={4} placeholder="maxLength is 6" maxLength={6} />
     </Space>
   );
 };
