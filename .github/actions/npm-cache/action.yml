@@ -5,7 +5,7 @@ runs:
   steps:
     - uses: actions/setup-node@v3
       with:
-        node-version-file: ./.node-version
+        node-version: "18"
         registry-url: "https://npm.pkg.github.com"
         scope: "@dhythm"
 
@@ -20,5 +20,3 @@ runs:
     - if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
       shell: bash
       run: npm install
-
-
