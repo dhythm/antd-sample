@@ -12,18 +12,76 @@ import {
   grey,
 } from "@ant-design/colors";
 import { Meta, Story } from "@storybook/react";
-import { Col, Divider, Row, Space, theme, Typography } from "antd";
+import {
+  Col,
+  ConfigProvider,
+  Divider,
+  Row,
+  Space,
+  theme,
+  Typography,
+} from "antd";
 import { CSSProperties, FC } from "react";
+
+interface Props {
+  colorPrimary: string;
+  colorSuccess: string;
+  colorWarning: string;
+  colorError: string;
+  colorInfo: string;
+}
 
 export default {
   title: "Theme",
-} as Meta;
+  argTypes: {
+    colorPrimary: {
+      defaultValue: "#248464",
+      control: { type: "color" },
+    },
+    colorSuccess: {
+      defaultValue: "#52c41a",
+      control: { type: "color" },
+    },
+    colorWarning: {
+      defaultValue: "#faad14",
+      control: { type: "color" },
+    },
+    colorError: {
+      defaultValue: "#ff4d4f",
+      control: { type: "color" },
+    },
+    colorInfo: {
+      defaultValue: "#1677ff",
+      control: { type: "color" },
+    },
+  },
+} as Meta<Props>;
 
 const { useToken } = theme;
 
-const Template: Story = () => {
-  const { token } = useToken();
+// https://ant.design/docs/spec/colors#palette-generation-tool
+const Template: Story<Props> = (args) => {
+  const { colorPrimary, colorSuccess, colorWarning, colorError, colorInfo } =
+    args;
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary,
+          colorSuccess,
+          colorWarning,
+          colorError,
+          colorInfo,
+        },
+      }}
+    >
+      <Component />
+    </ConfigProvider>
+  );
+};
 
+const Component = () => {
+  const { token } = useToken();
   const colorTokens = Object.entries(token).flatMap(([key, value]) =>
     key.startsWith("color") ? (
       <div
