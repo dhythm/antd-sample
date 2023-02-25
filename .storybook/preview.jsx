@@ -12,7 +12,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ConfigProvider theme={{ token: { colorPrimary: "#16828b" } }}>
+    <ConfigProvider theme={{ token: { colorPrimary: "#248464" } }}>
       <Story />
     </ConfigProvider>
   ),
