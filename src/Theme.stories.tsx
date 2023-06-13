@@ -32,7 +32,7 @@ interface Props {
 }
 
 export default {
-  title: "Theme",
+  title: "Theme/Theme",
   argTypes: {
     colorPrimary: {
       defaultValue: "#248464",
@@ -182,4 +182,4 @@ const Box: FC<{ bgColor: CSSProperties["backgroundColor"] }> = ({
   return <div style={{ width: 30, height: 30, backgroundColor: bgColor }} />;
 };
 
-export const $Theme = Template.bind({});
+export const Default = Template.bind({});
